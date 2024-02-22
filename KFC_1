@@ -1,0 +1,152 @@
+a_menyu = ["lavash", "hotdog", "burger", "pizza", "sandwich"]
+a_dreenk = ["pepsi", "fanta", "cola"] 
+a_price = [40, 45, 46, 89, 99, 90, 90, 9]
+menu = a_menyu + a_dreenk 
+k = [] 
+d=0 
+a=[] 
+a1=[] 
+q=[] 
+n=1 
+l=[] 
+s=[]
+foy=[] 
+m=0 
+n=1
+b=[]
+total_price=0
+choose=1 
+qiymat=0
+for i , items in enumerate(menu, start=1):
+    print(f"{i}.{items}")
+print()
+
+def admin():
+
+    global  a_price, menu, a_price,  total_price, k,d, a_dreenk,s,a
+    n=1
+    while n!=0:
+        n=input("+/- ")
+        if n.isdigit():
+            n=int(n)
+            if n==0:
+              break
+        else: 
+            if n=="-":
+        # print("element uchirishga hush keleibsiz")
+             x=int(input("uchiradigan element soni kiriting? "))
+             menu.remove(menu[x-1])
+             for i , items in enumerate(menu, start=1):
+                    print(f"{i}.{items}")
+                    
+        
+      
+            if n=="+":
+            # print("qushishga hush keleibsiz")
+                z=input("qushmoqchi bulgan elementni kiriting? ")
+                menu.append(z)
+                print("yangi ruyhat")
+                for i , items  in enumerate(menu, start=1):
+                     print(f"{i}.{items}")
+        
+        
+    
+    
+    # print("Admin kirish ga hush keleibsiz")
+    # n=input("+/-")
+    # if n=="+":
+    #         # print("qushishga hush keleibsiz")
+    #         z=input("qushmoqchi bulgan elementni kiriting? ")
+    #         menu.append(z)
+    #         print("yangi ruyhat")
+    #         for i , items  in enumerate(menu, start=1):
+    #                  print(f"{i}.{items}")
+    # if n=="-":
+    #     # print("element uchirishga hush keleibsiz")
+    #     x=int(input("uchiradigan element soni kiriting? "))
+    #     menu.remove(menu[x-1])
+    #     for i , items in enumerate(menu, start=1):
+    #         print(f"{i}.{items}")
+
+        
+    
+        
+    
+
+
+
+#foydalanuvchi bulimi 
+def foydalanuvchi():
+    global  a_price, menu, a_price,n, total_price, k,d, a_dreenk,s,a,b
+    print("Foydalanuvchi bulimiga hush kelib siz")
+    while n!=0:
+        n=input("NIma hohlaysiz? ")
+        if n.isdigit():
+            n=int(n)
+            if n==0:
+                break
+            else:
+                if len(menu)>=n:
+                    s.append(menu[n-1])
+                    z=int(input("nechita olasiz")) 
+                    total_price+=z*a_price[n-1]
+                    print(f"{z} ta {menu[n-1]}")
+                    print(total_price)
+                    k.append(z)
+                else:
+                    print("bunday qiymat elementda yuq ")
+        
+        if n=="+":
+            for i , items in enumerate(menu, start=1):
+                print(f"{i}.{items}")
+            print("savatchaga element qushmoqchimisiz ")    
+            c=input("ha/yoq: ")
+            if c=="ha":
+                z=int(input("qushoqchi bulgan elementni kiriting "))
+                s.append(menu[z-1])
+                k.append(a_price[z-1])
+            for i , items in enumerate(s, start=1):
+               print(f"{i}.{items}")
+                
+            
+                    
+                  
+        if n=="-":
+            for i , items in enumerate(s, start=1):
+                print(f"{i}.{items}")
+            
+            
+            z=int(input("Nechinchi elementini uchirib tashlamoqchimiszi? "))
+            s.remove(s[z-1])
+            del k[z-1]
+            total_price-=k[z-1]*a_price[z-1]
+            for  i, items in enumerate(s, start=1):
+                print(f"{i}.{items}")
+                
+    for i in range(len(s)):
+                if s[i] not in a:
+                    qiymat=0
+                    for j in range(len(s)):
+                           if s[i]==s[j]:
+                            qiymat+=k[j]
+                    a.append(s[i])
+                    print(f"{qiymat} ta {s[i]}")
+    print(f"jami summa:{total_price}.mingsum") 
+            
+
+           
+while True:
+        print("0.Chiqiqsh")
+        print("1.Admin Kirish")
+        print("2.Foydalanuvchi")
+        w=int(input("Ummumiy kirish  "))
+        if w==0:
+            break
+        
+        elif w==1:
+            admin()
+        elif w==2:
+             foydalanuvchi()
+        else:
+                print("bunday kirish topilmadi")
+        
